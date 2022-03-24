@@ -1,0 +1,25 @@
+const extend = require('xtend');
+const createRandomId = require('json-rpc-random-id')();
+const request = require("request");
+
+module.exports = SolanaQuery;
+
+function addressToPublicKey(address) {
+  return new Web3.PublicKey(address);
+}
+
+/**
+ * Constructor function
+ * Init SolanaQuery
+ * 
+ * @param {string} rpcEndpoint The url of RPC Endpoint
+ * @void
+ */
+function SolanaQuery(rpcEndpoint){
+  if (typeof(rpcEndpoint)==="string") {
+    this._rpcEndpoint = rpcEndpoint;
+  }
+  else {
+    throw (new Error("rpcEndpoint is invalid. Please check!"));
+  }
+}
